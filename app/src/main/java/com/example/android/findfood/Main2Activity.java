@@ -625,7 +625,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
-    
+
 
     @Override
     protected void onStart(){
