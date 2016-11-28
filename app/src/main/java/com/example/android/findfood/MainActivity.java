@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    static final int ACT2_REQUEST = 99;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Intent intent2 = new Intent(this, Main2Activity.class);
-        startActivity(intent2);
+        startActivityForResult(intent2,ACT2_REQUEST);
+        masukan1.setText("");
     }
 
 }
