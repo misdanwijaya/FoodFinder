@@ -409,7 +409,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
 
     //untuk restoran
     String Restaurant = "restaurant";
-
     public void tampilkan() {
         Log.d("onClick", "Button is Clicked");
         mMap.clear();
@@ -426,6 +425,23 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     //help
     public void klikHelp() {
         ImageView image = new ImageView(this);
+        image.setImageResource(R.drawable.images);
+
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(this).
+                        setTitle("Turn On Your GPS or Location Setting").
+                        setPositiveButton("Next", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                klikHelp2();
+                            }
+                        }).
+                        setView(image);
+        builder.create().show();
+    }
+
+    public void klikHelp2() {
+        ImageView image = new ImageView(this);
         image.setImageResource(R.drawable.shake);
 
         AlertDialog.Builder builder =
@@ -440,5 +456,6 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                         setView(image);
         builder.create().show();
     }
+
 
 }
