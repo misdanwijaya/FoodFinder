@@ -4,6 +4,9 @@
     <item android:title="Achievement"
         android:id="@+id/mAchievement"/>
 
+    <item android:title="Help"
+        android:id="@+id/mHelp"/>
+
     <item android:title="Log Out"
         android:id="@+id/mLogout" />
 

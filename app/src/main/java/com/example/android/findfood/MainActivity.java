@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         // cek request code
         if (requestCode == ACT2_REQUEST) {
 
-
             //tampilkan toast
             Toast toast = Toast.makeText(getApplicationContext(),"You Have Been Log Out",Toast.LENGTH_LONG);
             toast.show();
