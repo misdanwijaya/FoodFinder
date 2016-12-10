@@ -71,7 +71,8 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".Achievement" />
-        <activity android:name=".your_profile"></activity>
+        <activity android:name=".your_profile" />
+        <activity android:name=".Friend"></activity>
     </application>
 
 </manifest>

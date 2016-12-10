@@ -60,6 +60,5 @@ public class your_profile extends AppCompatActivity {
         setResult(RESULT_OK, intent2);
         finish();
 
-
     }
 }

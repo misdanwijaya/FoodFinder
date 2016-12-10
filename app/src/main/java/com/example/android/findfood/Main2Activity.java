@@ -54,6 +54,7 @@ import static com.example.android.findfood.R.drawable.tanda;
 public class Main2Activity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
 
+
     private GoogleMap mMap;
     double latitude;
     double longitude;
@@ -65,6 +66,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
 
     public static final String EXTRA_MESSAGE3 = "profile" ;
     public static final String EXTRA_MESSAGE2 = "badges";
+    public static final String EXTRA_MESSAGE4 = "friend" ;
     static final int ACT2_REQUEST = 99;  // request code
 
     @Override
@@ -133,6 +135,11 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
                 klikProfile();
                 return true;
 
+            case R.id.mFriend:
+                //Toast.makeText(getApplicationContext(), "Achievement", Toast.LENGTH_LONG).show();
+                klikFriend();
+                return true;
+
             case R.id.mAchievement:
                 //Toast.makeText(getApplicationContext(), "Achievement", Toast.LENGTH_LONG).show();
                 klikAchievement();
@@ -185,6 +192,13 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         Intent intent = new Intent(this, your_profile.class);
         //cara 2
         intent.putExtra(your_profile.EXTRA_MESSAGE3, "This is Your Profile");
+        startActivityForResult(intent, ACT2_REQUEST);
+    }
+
+    public void klikFriend() {
+        Intent intent = new Intent(this, Friend.class);
+        //cara 2
+        intent.putExtra(Friend.EXTRA_MESSAGE4, "This is Your Nearby Friend");
         startActivityForResult(intent, ACT2_REQUEST);
     }
 
