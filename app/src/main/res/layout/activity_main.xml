@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:inputType="textCapWords|textPersonName"
             android:layout_marginTop="250dp"
-            android:hint="Input Your Name Here"
+            android:hint="Input Your Username Here"
             android:id="@+id/username"
             android:gravity="center"
             android:textStyle="bold"

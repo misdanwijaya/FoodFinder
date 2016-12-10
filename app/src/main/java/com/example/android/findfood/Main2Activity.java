@@ -63,6 +63,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
 
+    public static final String EXTRA_MESSAGE3 = "profile" ;
     public static final String EXTRA_MESSAGE2 = "badges";
     static final int ACT2_REQUEST = 99;  // request code
 
@@ -127,6 +128,11 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
+            case R.id.mProfile:
+                //Toast.makeText(getApplicationContext(), "Achievement", Toast.LENGTH_LONG).show();
+                klikProfile();
+                return true;
+
             case R.id.mAchievement:
                 //Toast.makeText(getApplicationContext(), "Achievement", Toast.LENGTH_LONG).show();
                 klikAchievement();
@@ -171,6 +177,14 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         Intent intent = new Intent(this, Achievement.class);
         //cara 2
         intent.putExtra(Achievement.EXTRA_MESSAGE2, "This is Your Badges");
+        startActivityForResult(intent, ACT2_REQUEST);
+    }
+
+
+    public void klikProfile() {
+        Intent intent = new Intent(this, your_profile.class);
+        //cara 2
+        intent.putExtra(your_profile.EXTRA_MESSAGE3, "This is Your Profile");
         startActivityForResult(intent, ACT2_REQUEST);
     }
 

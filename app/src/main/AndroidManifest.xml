@@ -9,20 +9,20 @@
     -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <!--Untuk Maps-->
+    <!-- Untuk Maps -->
     <uses-permission android:name="com.androidtutorialpoint.mymapsappsdirection.permission.MAPS_RECEIVE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Food Finder"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        android:largeHeap="true">
+        android:largeHeap="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -38,7 +38,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
 
         <!-- Urutan 1 -->
         <activity
@@ -70,7 +70,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".Achievement"></activity>
+        <activity android:name=".Achievement" />
+        <activity android:name=".your_profile"></activity>
     </application>
 
 </manifest>
