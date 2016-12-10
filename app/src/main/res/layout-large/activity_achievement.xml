@@ -14,7 +14,7 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#64B5F6"
+        android:background="?attr/colorPrimary"
         android:theme="?attr/actionBarTheme"
         android:minHeight="?attr/actionBarSize"
         android:id="@+id/toolbar2"
@@ -25,9 +25,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/toolbar2">
         <!--**************************************************************-->
 
@@ -42,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="1"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="20dp">
 
 
                 <LinearLayout
@@ -53,8 +52,8 @@
 
                     <ImageView
                         android:layout_gravity="center"
-                        android:layout_width="126dp"
-                        android:layout_height="117dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         app:srcCompat="@drawable/eat"
                         android:id="@+id/badge1"
                         android:onClick="klikBadges1"/>
@@ -71,8 +70,8 @@
 
                     <ImageView
                         android:layout_gravity="center"
-                        android:layout_width="126dp"
-                        android:layout_height="117dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         app:srcCompat="@drawable/bwcake"
                         android:id="@+id/badge2"
                         android:onClick="klikBadges2"/>
@@ -89,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="1"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 >
 
 
@@ -102,11 +101,12 @@
 
                     <ImageView
                         android:layout_gravity="center"
-                        android:layout_width="126dp"
-                        android:layout_height="117dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         app:srcCompat="@drawable/bwegg"
                         android:id="@+id/badge3"
                         android:onClick="klikBadges3"/>
+
 
 
                 </LinearLayout>
@@ -119,8 +119,8 @@
 
                     <ImageView
                         android:layout_gravity="center"
-                        android:layout_width="126dp"
-                        android:layout_height="117dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         app:srcCompat="@drawable/bwchicken"
                         android:id="@+id/badge4"
                         android:onClick="klikBadges4"/>
@@ -137,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="1"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 >
 
 
@@ -149,11 +149,12 @@
 
                     <ImageView
                         android:layout_gravity="center"
-                        android:layout_width="126dp"
-                        android:layout_height="117dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         app:srcCompat="@drawable/bwburger"
                         android:id="@+id/badge5"
                         android:onClick="klikBadges5"/>
+
 
 
                 </LinearLayout>
@@ -166,11 +167,12 @@
 
                     <ImageView
                         android:layout_gravity="center"
-                        android:layout_width="126dp"
-                        android:layout_height="117dp"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
                         app:srcCompat="@drawable/bwpizza"
                         android:id="@+id/badge6"
                         android:onClick="klikBadges6"/>
+
 
 
                 </LinearLayout>
