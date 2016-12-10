@@ -419,7 +419,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         Log.d("onClick", url);
         GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
         getNearbyPlacesData.execute(DataTransfer);
-        Toast.makeText(Main2Activity.this, "Nearby Restaurants", Toast.LENGTH_LONG).show();
+        Toast.makeText(Main2Activity.this, "Searching Nearby Restaurants...", Toast.LENGTH_LONG).show();
     }
 
     //help
