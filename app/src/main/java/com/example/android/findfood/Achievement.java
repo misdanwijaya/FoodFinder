@@ -28,6 +28,7 @@ public class Achievement extends AppCompatActivity {
         //untuk toolbar
         Toolbar myToolbar2 = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(myToolbar2);
+        getSupportActionBar().setTitle("Achievement");
 
         //notif
         //ambil intent
