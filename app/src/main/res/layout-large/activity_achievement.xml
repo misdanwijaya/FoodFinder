@@ -54,7 +54,7 @@
                         android:layout_gravity="center"
                         android:layout_width="200dp"
                         android:layout_height="200dp"
-                        app:srcCompat="@drawable/eat"
+                        app:srcCompat="@drawable/blackeat"
                         android:id="@+id/badge1"
                         android:onClick="klikBadges1"/>
 

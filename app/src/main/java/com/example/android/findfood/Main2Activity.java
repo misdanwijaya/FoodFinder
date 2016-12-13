@@ -70,6 +70,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
+    int backpress;
 
     public static final String EXTRA_ID = "id" ;
     public static final String EXTRA_MESSAGE3 = "profile" ;
@@ -130,7 +131,14 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
 
     @Override
     public void onBackPressed() {
-        moveTaskToBack(true);
+        backpress = (backpress +1);
+
+        Toast.makeText(getApplicationContext(),"Press Back again to Exit",Toast.LENGTH_SHORT).show();
+
+        if(backpress > 1){
+            this.finish();
+        }
+       // moveTaskToBack(true);
     }
 
     //tollbar
@@ -226,7 +234,7 @@ public class Main2Activity extends AppCompatActivity implements OnMapReadyCallba
         Intent intent = new Intent(this, Achievement.class);
         //cara 2
         intent.putExtra(Achievement.EXTRA_MESSAGE2, "This is Your Badges");
-
+        intent.putExtra(Achievement.EXTRA_ID, id);
         startActivityForResult(intent, ACT2_REQUEST);
     }
 
