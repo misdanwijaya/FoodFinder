@@ -1,14 +1,22 @@
 package com.example.android.findfood;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +24,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -24,12 +36,28 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class your_profile extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE3 = "profile" ;
     public static final String EXTRA_ID = "id" ;
     public TextView tUsername;
     public TextView tScore;
+    public TextView tLocation;
+
+    //foto
+    CircleImageView imgProfile;
+    static final int REQUEST_CAMERA = 0;
+    static final int SELECT_FILE = 1;
+    private String userChoosenTask;
+
+
+    String[] value = new String[]{
+            "Choose from Gallery",
+            "Take Photo",
+            "Remove Profile Photo"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +73,18 @@ public class your_profile extends AppCompatActivity {
 
         tUsername = (TextView) findViewById(R.id.uName);
         tScore = (TextView) findViewById(R.id.uScore);
+        tLocation = (TextView) findViewById(R.id.uLocation);
+
+        //foto
+        imgProfile = (CircleImageView) findViewById(R.id.imgProfile);
+        imgProfile.setImageResource(R.drawable.user);
+
+        imgProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogPhoto();
+            }
+        });
 
         //notif
         //ambil intent
@@ -55,6 +95,116 @@ public class your_profile extends AppCompatActivity {
         //tampilkan toast
         Toast t = Toast.makeText(getApplicationContext(),pesan,Toast.LENGTH_LONG);
         t.show();
+    }
+
+    //foto
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case Utility.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if(userChoosenTask.equals("Take Photo"))
+                        cameraIntent();
+                    else if(userChoosenTask.equals("Choose from Library"))
+                        galleryIntent();
+                } else {
+                    //code for deny
+                }
+                break;
+        }
+    }
+
+    public void dialogPhoto(){
+        AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(your_profile.this);
+
+        alertdialogbuilder.setTitle("Profile Picture");
+
+        alertdialogbuilder.setItems(value, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                boolean result=Utility.checkPermission(your_profile.this);
+
+                switch (value[item]) {
+                    case "Choose from Gallery":
+                        Toast.makeText(your_profile.this, "Select Photo", Toast.LENGTH_SHORT).show();
+                        userChoosenTask = "Choose from Library";
+                        if (result)
+                            galleryIntent();
+                        break;
+                    case "Take Photo":
+                        Toast.makeText(your_profile.this, "Take Photo", Toast.LENGTH_SHORT).show();
+                        userChoosenTask = "Take Photo";
+                        if (result)
+                            cameraIntent();
+                        break;
+                    case "Remove Profile Photo":
+                        Toast.makeText(your_profile.this, "Photo Removed", Toast.LENGTH_SHORT).show();
+                        imgProfile.setImageResource(R.drawable.user);
+                        break;
+                }
+
+            }
+        });
+
+        AlertDialog dialog = alertdialogbuilder.create();
+
+        dialog.show();
+    }
+
+    private void cameraIntent(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, REQUEST_CAMERA);
+    }
+
+    private void galleryIntent(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);//
+        startActivityForResult(Intent.createChooser(intent, "Select File"),SELECT_FILE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == SELECT_FILE)
+                onSelectFromGalleryResult(data);
+            else if (requestCode == REQUEST_CAMERA)
+                onCaptureImageResult(data);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    private void onSelectFromGalleryResult(Intent data) {
+        Bitmap bm=null;
+        if (data != null) {
+            try {
+                bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        imgProfile.setImageBitmap(bm);
+    }
+
+    private void onCaptureImageResult(Intent data) {
+        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
+        File destination = new File(Environment.getExternalStorageDirectory(),
+                System.currentTimeMillis() + ".jpg");
+        FileOutputStream fo;
+        try {
+            destination.createNewFile();
+            fo = new FileOutputStream(destination);
+            fo.write(bytes.toByteArray());
+            fo.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imgProfile.setImageBitmap(thumbnail);
     }
 
     //tollbar
@@ -88,7 +238,8 @@ public class your_profile extends AppCompatActivity {
     private class AmbilData extends AsyncTask<String, Integer, String> {
         protected String username;
         protected String score;
-        protected String deskripsi;
+        protected String latitude;
+        protected String longitude;
 
         protected String doInBackground(String... strUrl) {
             Log.v("yw", "mulai ambil data");
@@ -137,6 +288,8 @@ public class your_profile extends AppCompatActivity {
                 JSONObject jo  =  jsonObj.getJSONObject("message");
                 username = jo.getString("username");
                 score = jo.getString("points");
+                latitude = jo.getString("latitude");
+                longitude = jo.getString("longtitude");
 
 
             } catch (MalformedURLException e) {
@@ -161,6 +314,7 @@ public class your_profile extends AppCompatActivity {
         protected void onPostExecute(String result) {
             tUsername.setText(username);
             tScore.setText(score);
+            tLocation.setText("Latitude : " + latitude + " Longitude : " + longitude);
         }
     }
 }

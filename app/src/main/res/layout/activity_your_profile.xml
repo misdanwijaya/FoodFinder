@@ -36,7 +36,7 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_marginTop="20dp"
-                android:id="@+id/uPhoto"
+                android:id="@+id/imgProfile"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
