@@ -64,7 +64,7 @@ public class Friend extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 String isiBaris = (String) listFriend.getItemAtPosition(position);
-                String pesan = "Posisi:"+position +"->"+ isiBaris;
+                String pesan = isiBaris+": Online";
                 Toast toast = Toast.makeText(getApplicationContext(), pesan, Toast.LENGTH_SHORT);
                 toast.show();
             }
