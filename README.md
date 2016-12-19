@@ -1,6 +1,6 @@
 # FoodFinder
-Aplikasi untuk mencari tempat makanan/ restoran terdekat dari tempat pemakai aplikasi itu berada. Aplikasi akan memberikan rekomendasi lokasi tempat makan terdekat setelah pengguna menyalakan sensor GPS dan mencari tempat dengan melakukan shake pada smartphone pengguna.
-Pengguna pun bisa mengetahui pengguna lain yang sedang berstatus online (sedang menggunakan aplikasi). Apabila pengguna telah sampai tempat tujuan maka akan mendapatkan poin tiap menggujungi tempat makan.
+Aplikasi untuk mencari tempat makan/ restoran terdekat dari tempat pemakai aplikasi itu berada. Aplikasi akan memberikan rekomendasi lokasi tempat makan terdekat setelah pengguna menyalakan sensor GPS dan mencari tempat dengan melakukan shake pada smartphone pengguna.
+Pengguna pun bisa mengetahui pengguna lain yang sedang berstatus online (sedang menggunakan aplikasi). Apabila pengguna telah sampai tempat tujuan maka akan mendapatkan poin tiap mengunjungi tempat makan.
 
 Team Developer :
 
