@@ -15,3 +15,5 @@ Yogi Siswanto (1301614)
 
 
 APK : https://drive.google.com/open?id=0By8-JdB5pJ1FV2hvRGtTQXZ0NkU
+
+Video : https://youtu.be/imWElNKCkKA
