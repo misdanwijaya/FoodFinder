@@ -4,8 +4,11 @@ Food Finder merupakan aplikasi untuk mencari tempat makan/restoran terdekat dari
 Developer Team:
 
 Abdul Aziz Priatna (1307123)
+
 Misdan Wijaya (1305262)
+
 Muhammad Aziz Ashari (1305793)
+
 Yogi Siswanto (1301614)
 
 
